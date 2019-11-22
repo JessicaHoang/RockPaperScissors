@@ -1,4 +1,6 @@
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -55,16 +57,40 @@ public class ButtonImageExample
         rockButton.setIcon(rockImage);
         rockButton.setHorizontalTextPosition(AbstractButton.CENTER);
         rockButton.setVerticalTextPosition(AbstractButton.BOTTOM);
+		rockButton.addActionListener(new ActionListener() 
+		{
+			@Override
+			public void actionPerformed(ActionEvent e) 
+			{
+				System.out.println("You chose rock!");
+			}
+		});
         
         paperButton = new JButton("Paper!");
         paperButton.setIcon(paperImage);
         paperButton.setHorizontalTextPosition(AbstractButton.CENTER);
         paperButton.setVerticalTextPosition(AbstractButton.BOTTOM);
+		paperButton.addActionListener(new ActionListener() 
+		{
+			@Override
+			public void actionPerformed(ActionEvent e) 
+			{
+				System.out.println("You chose paper!");
+			}
+		});
 
         scissorsButton = new JButton("Scissors!");
         scissorsButton.setIcon(scissorsImage);
         scissorsButton.setHorizontalTextPosition(AbstractButton.CENTER);
         scissorsButton.setVerticalTextPosition(AbstractButton.BOTTOM);
+		scissorsButton.addActionListener(new ActionListener() 
+		{
+			@Override
+			public void actionPerformed(ActionEvent e) 
+			{
+				System.out.println("You chose scissors!");
+			}
+		});
 
 		JPanel southBtnPanel = new JPanel(new GridLayout(1, 3, 1, 1));
 		southBtnPanel.add(rockButton);
@@ -72,15 +98,20 @@ public class ButtonImageExample
 		southBtnPanel.add(scissorsButton);
 		
 		contentPane.add(southBtnPanel,BorderLayout.SOUTH);
-        //contentPane.add(rockButton);
-        //contentPane.add(paperButton);
-        //contentPane.add(scissorsButton);
 
         frame.setContentPane(contentPane);
         frame.pack();
         frame.setLocationByPlatform(true);
         frame.setVisible(true);
     }
+    
+	private static void introductionPanel()
+	{ // give the instruction to the game
+		String text="Player gets their choice between Rock, Paper, and Scissors.\nThe player will compete against the computers random choice.\n"
+				+ "Rock beats Scissors. Paper beats Rock. Scissors beats paper.\n                      "
+				+ "           Good Luck! Best 2/3 WINS!";
+		JOptionPane.showMessageDialog(null,text, "How to play", 0, new ImageIcon(System.getProperty("user.dir")+"/image/5.gif"));
+	}
 
     public static void main(String... args)
     {
@@ -89,6 +120,7 @@ public class ButtonImageExample
             public void run()
             {
                 new ButtonImageExample().displayGUI();
+                introductionPanel();
             }
         });
     }
