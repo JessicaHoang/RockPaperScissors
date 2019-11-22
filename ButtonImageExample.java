@@ -15,8 +15,6 @@ public class ButtonImageExample
     private ImageIcon paperImage;    
     private JButton scissorsButton;
     private ImageIcon scissorsImage;
-    private int newHeight =50;
-    private int newWidth = 50;
 
     private void displayGUI()
     {
