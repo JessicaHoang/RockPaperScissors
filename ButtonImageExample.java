@@ -1,3 +1,4 @@
+  
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,7 +8,7 @@ import java.net.URL;
 import javax.swing.*;
 import javax.imageio.ImageIO;
 
-public class ButtonImageExample
+public class ButtonImageExample implements ActionListener
 {
     private JButton rockButton;
     private ImageIcon rockImage;
@@ -15,6 +16,8 @@ public class ButtonImageExample
     private ImageIcon paperImage;    
     private JButton scissorsButton;
     private ImageIcon scissorsImage;
+    private int win;
+    private int loss;
 
     private void displayGUI()
     {
@@ -61,6 +64,24 @@ public class ButtonImageExample
 			public void actionPerformed(ActionEvent e) 
 			{
 				System.out.println("You chose rock!");
+				//rock = 0, paper = 1, scissors = 2
+				//a = player, b = computer
+				int a = 0;
+				int b = getCompRand(0,2);
+				if(a==b) {
+					//tie
+				}
+				else if((a-b)%3 == 1) 
+				{
+					win++;
+					System.out.println("Wins: "+win);
+					//once the wins rack up to 2/3, it needs to prompt end game.
+				}
+				else {
+					loss++;
+					System.out.println("Loss "+loss);
+				}
+				
 			}
 		});
         
@@ -74,6 +95,24 @@ public class ButtonImageExample
 			public void actionPerformed(ActionEvent e) 
 			{
 				System.out.println("You chose paper!");
+				System.out.println("You chose rock!");
+				//rock = 0, paper = 1, scissors = 2
+				//a = player, b = computer
+				int a = 1;
+				int b = getCompRand(0,2);
+				if(a==b) {
+					//tie
+				}
+				else if((a-b)%3 == 1) 
+				{
+					win++;
+					System.out.println("Wins: "+win);
+					//once the wins rack up to 2/3, it needs to prompt end game.
+				}
+				else {
+					loss++;
+					System.out.println("Loss "+loss);
+				}
 			}
 		});
 
@@ -87,6 +126,24 @@ public class ButtonImageExample
 			public void actionPerformed(ActionEvent e) 
 			{
 				System.out.println("You chose scissors!");
+				System.out.println("You chose rock!");
+				//rock = 0, paper = 1, scissors = 2
+				//a = player, b = computer
+				int a = 2;
+				int b = getCompRand(0,2);
+				if(a==b) {
+					//tie
+				}
+				else if((a-b)%3 == 1) 
+				{
+					win++;
+					System.out.println("Wins: "+win);
+					//once the wins rack up to 2/3, it needs to prompt end game.
+				}
+				else {
+					loss++;
+					System.out.println("Loss "+loss);
+				}
 			}
 		});
 
@@ -122,4 +179,15 @@ public class ButtonImageExample
             }
         });
     }
+    
+    public static int getCompRand(int min, int max) {
+    	int x = (int) (Math.random()*((max-min)+1)+min);
+    	return x;
+    }
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		
+	}
 }
