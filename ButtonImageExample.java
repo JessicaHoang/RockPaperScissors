@@ -24,7 +24,6 @@ public class ButtonImageExample implements ActionListener
     {
         JFrame frame = new JFrame("Button Image Example");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        JLabel result = new JLabel();
 
         JPanel contentPane = new JPanel();
         try
@@ -77,7 +76,6 @@ public class ButtonImageExample implements ActionListener
 				int b = getCompRand(0,2);
 				System.out.println(a);
 				System.out.println(b);
-				result.setText("a is 0");
 				rpsLogic(a,b);
 				
 			}
@@ -98,7 +96,6 @@ public class ButtonImageExample implements ActionListener
 				int b = getCompRand(0,2);
 				System.out.println(a);
 				System.out.println(b);
-				result.setText("a is 1");
 				rpsLogic(a,b);
 			}
 		});
@@ -118,7 +115,6 @@ public class ButtonImageExample implements ActionListener
 				int b = getCompRand(0,2);
 				System.out.println(a);
 				System.out.println(b);
-				result.setText("a is 2");
 				rpsLogic(a,b);
 			}
 		});
@@ -130,7 +126,6 @@ public class ButtonImageExample implements ActionListener
 		
 		contentPane.add(southBtnPanel,BorderLayout.SOUTH);
 
-		frame.add(result);
         frame.setContentPane(contentPane);
         frame.pack();
         frame.setLocationByPlatform(true);
