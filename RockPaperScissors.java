@@ -197,49 +197,67 @@ public class RockPaperScissors implements ActionListener
 		outcome.setForeground(Color.black);
 		if(player==computer) {
 			outcome.setText("Tie");
+			System.out.println("Tie!");
 			//tie
 		}
-		else if((player-computer)%3 == 1) 
+		else 
 		{
-			win++;
-			score.setText(win + "/" + loss);
-			outcome.setText("You Win!");
-			System.out.println("Wins: "+win);
-			if(win == 2) 
+			if(player==0 && computer==2 || player==1 && computer==0
+    				||player==2 && computer==1) 
 			{
-				outcome.setForeground(Color.blue);
-				outcome.setText("2/3 Win. Congratz you won!");
-				System.out.println("2/3 Win. Congratz you won!");
-				score.setText(2 + "/" + loss);
-				//reset game
-				win = 0;
-				loss = 0;
+				/*possible wins:
+    			 * 1. rock vs scissors
+    			 * 2. paper vs rock
+    			 * 3. scissors vs paper*/
+				win++;
+				score.setText(win + "/" + loss);
+				outcome.setText("You Win!");
+				System.out.println("Wins: "+win);
+				if(win == 2) 
+				{
+					outcome.setForeground(Color.blue);
+					outcome.setText("2/3 Win. Congratz you won!");
+					System.out.println("2/3 Win. Congratz you won!");
+					score.setText(2 + "/" + loss);
+					//reset game
+					win = 0;
+					loss = 0;
 
+				}
+				else 
+				{
+					//do nothing, game continues
+				
+				}
 			}
-			else 
+			else if(player==0 && computer==1 || player==1 && computer==2
+    				|| player==2 && computer==0
+) 
 			{
-				//do nothing, game continues
-			}
-		}
-		else {
-			loss++;
-			outcome.setText("You lost");
-			score.setText(win + "/" + loss);
-			System.out.println("Loss "+loss);
-			if(loss == 2) 
-			{
-				outcome.setForeground(Color.red);
-				outcome.setText("2/3 Losses. Better luck next time!");
-				System.out.println("2/3 Losses. Better luck next time!");
-				score.setText(win + "/" + 2);
-				win = 0;
-				loss = 0;
+				/*possible loss:
+    			 * 1. rock vs paper
+    			 * 2. paper vs scissors
+    			 * 3. scissors vs rock*/
+				loss++;
+				outcome.setText("You lost");
+				score.setText(win + "/" + loss);
+				System.out.println("Loss "+loss);
+				if(loss == 2) 
+				{
+					outcome.setForeground(Color.red);
+					outcome.setText("2/3 Losses. Better luck next time!");
+					System.out.println("2/3 Losses. Better luck next time!");
+					score.setText(win + "/" + 2);
+					win = 0;
+					loss = 0;
 
+				}
+				else 
+				{
+					//do nothing, game continues
+				}
 			}
-			else 
-			{
-				//do nothing, game continues
-			}
+		
 		}
 	}
 	@Override
