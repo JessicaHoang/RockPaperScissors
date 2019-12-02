@@ -3,5 +3,4 @@ Team Members:
 Jessica Hoang,
 Braulio Mendoza
 
-Time:
 
